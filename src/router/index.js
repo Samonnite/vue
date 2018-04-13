@@ -7,8 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: '',
-      component: 
+      name: 'App',
+      component: require('../App')
     }
   ]
 })
