@@ -30,7 +30,7 @@
       <div>即将上映</div>
     </div>
     <div class="coming-soon">
-      <div class="item" v-for="item in coming">
+      <div class="item" v-for="(key,item) in coming">
         <router-link :to="{name:'details',params:{id:item.id}}">
           <img :src="item.cover.origin" alt="">
           <div class="desc">
@@ -61,6 +61,36 @@ export default {
         autoHeight: true
       }
     }
+  },
+  created: function () {
+    this.$store.comit('COM_CONF', {
+      title: '卖座电影'
+    })
+    if (this.banner.length === 0) {
+      this.$store.dispatch('getBannerList')
+    }
+    if (this.nowplay.length === 0) {
+      this.$store.dispatch('getNowPlaying')
+    }
+    if (this.coming.length === 0) {
+      this.$store.dispatch('getComingSoon')
+    }
+  },
+  computed: mapGetters({
+    banner: 'getBannerList',
+    nowplay: 'getNowPlaying',
+    coming: 'getComingSoon'
+  }),
+  filters: {
+    formatDate: function (time) {
+      let date = new Date(time * 1)
+      let month = date.getMonth() + 1 > 9 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)
+      let day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
+      return `${month}月${day}上映`
+    }
+  },
+  components: {
+    swiper: swiperSlide
   }
 }
 </script>

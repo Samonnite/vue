@@ -1,15 +1,17 @@
 <template>
   <div id="header">
-      <div class="go-menu" @click="showNav"><i class="icon iconfont icon-menu"></i></div>
-      <div class="title"><p>{{com.title}}</p><a href="" class="go-city"><i class="icon iconfont icon-bottom"></i></a></div>
-      <a href="" class="go-mine"><i class="icon iconfont icon-people"></i></a>
+    <a class="go-menu" @click="showNav"><i class="icon iconfont icon-menu"></i></a>
+    <div class="title"><p>{{com.title}}</p><a class="go-city">广州<i class="icon iconfont icon-bottom"></i></a></div>
+    <a class="go-mine"><i class="icon iconfont icon-people"></i></a>
   </div>
 </template>
-
 <script>
-import '../assets/header.sass'
 import '../assets/icon/iconfont.css'
+import '../assets/header.sass'
 export default {
+  data () {
+    return {}
+  },
   props: {
     com: {
       type: Object
@@ -17,8 +19,9 @@ export default {
   },
   methods: {
     showNav: function () {
-      return this.$store.dispatch('changeLeftNavState', true)
+      return this.$store.dispatch('changeLeftNavState',true)
     }
   }
+
 }
 </script>

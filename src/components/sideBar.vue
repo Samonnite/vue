@@ -22,7 +22,7 @@
 <script>
 import '../assets/sidebar.sass'
 export default {
-  data() {
+  data () {
     let menuList = [
       {
         name: '首页',
@@ -43,7 +43,7 @@ export default {
     }
   },
   methods: {
-    hideNav() {
+    hideNav () {
       this.$store.dispatch('changeLeftNavState', false)
     }
   }

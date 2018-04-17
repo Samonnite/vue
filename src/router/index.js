@@ -1,43 +1,45 @@
+/**
+ * Create by zechun.chen on 2016/12/22
+ * 路由规则
+ */
+
 import Vue from 'vue'
-import Router from 'vue-router'
-import App from '../App'
-import Home from '../views/home'
-import Details from '../views/details'
-import Cinema from '../views/cinema'
-import Film from '../views/film'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+Vue.use(VueRouter)
+const routes = [
+  {
+    path: '/',
+    component: require('./App'),
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: require('./pages/home')
+      },
+      {
+        path: '/detail/:id',
+        name: 'detail',
+        component: require('./pages/detail')
+      },
+      {
+        path: '/cinema/:id',
+        name: 'cinema',
+        component: require('./pages/cinema')
+      },
+      {
+        path: '/film/:type',
+        name: 'film',
+        component: require('./pages/film')
+      }
+    ]
+  }
+]
 
-export default new Router({
+const router = new VueRouter({
+  routes: routes,
   history: true,
-  linkActiveClass: 'active',
-  routes: [
-    {
-      path: '/',
-      name: 'App',
-      component: App,
-      children: [
-        {
-          path: '/home',
-          name: 'home',
-          component: Home
-        },
-        {
-          path: '/details/:id',
-          name: 'details',
-          component: Details
-        },
-        {
-          path: '/cinema/:id',
-          name: 'cinema',
-          component: Cinema
-        },
-        {
-          path: '/film/:type',
-          name: 'film',
-          component: Film
-        }
-      ]
-    }
-  ]
+  linkActiveClass: 'active' // 如果有底部导航栏，这个属性可以为被选中的路由增加相应的选中状态class
 })
+
+export default router
