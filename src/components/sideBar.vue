@@ -1,24 +1,23 @@
 <template>
-  <div class="sidebar">
-      <div class="sidebar-container" @click="hideNav" v-show="show">
-          <div class="sidebar-overlay">
-              <transition>
-              <nav v-show="show">
-                  <ul>
-                      <li v-for="(key,menu) in menuList">
-                          <router-link :to="menu.path">
-                              <span>{{menu.name}}</span>
-                              <i class="icon iconfont icon-right"></i>
-                          </router-link>
-                      </li>
-                  </ul>
-              </nav>
-              </transition>
-          </div>
+  <div id="sidebar">
+    <div class="sidebar-container" @click='hideNav' v-show="show">
+      <div class="sidebar-overlay">
+        <transition name="leftNav" mode="">
+          <nav v-show='show'>
+            <ul>
+              <li v-for='menu in menuList'>
+                <router-link :to='menu.path'>
+                  <span>{{menu.name}}</span>
+                  <i class="icon iconfont icon-right"></i>
+                </router-link>
+              </li>
+            </ul>
+          </nav>
+        </transition>
       </div>
+    </div>
   </div>
 </template>
-
 <script>
 import '../assets/sidebar.sass'
 export default {
@@ -38,7 +37,7 @@ export default {
     }
   },
   computed: {
-    show: function() {
+    show: function () {
       return this.$store.getters.leftNavState
     }
   },

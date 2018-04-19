@@ -30,7 +30,7 @@
       <div>即将上映</div>
     </div>
     <div class="coming-soon">
-      <div class="item" v-for="(key,item) in coming">
+      <div class="item" v-for="item in coming">
         <router-link :to="{name:'details',params:{id:item.id}}">
           <img :src="item.cover.origin" alt="">
           <div class="desc">
@@ -63,7 +63,7 @@ export default {
     }
   },
   created: function () {
-    this.$store.comit('COM_CONF', {
+    this.$store.commit('COM_CONF', {
       title: '卖座电影'
     })
     if (this.banner.length === 0) {
@@ -76,11 +76,6 @@ export default {
       this.$store.dispatch('getComingSoon')
     }
   },
-  computed: mapGetters({
-    banner: 'getBannerList',
-    nowplay: 'getNowPlaying',
-    coming: 'getComingSoon'
-  }),
   filters: {
     formatDate: function (time) {
       let date = new Date(time * 1)
@@ -91,6 +86,13 @@ export default {
   },
   components: {
     swiper: swiperSlide
+  },
+  methods: {
+    ...mapGetters({
+      banner: 'getBannerList',
+      nowplay: 'getNowPlaying',
+      coming: 'getComingSoon'
+    })
   }
 }
 </script>

@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     showNav: function () {
-      return this.$store.dispatch('changeLeftNavState',true)
+      return this.$store.dispatch('changeLeftNavState', true)
     }
   }
 
