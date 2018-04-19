@@ -38,7 +38,7 @@ const actions = {
   },
   // 左侧导航栏的开关
   changeLeftNavState ({commit}, status) {
-    commit(types.COM_LOADING_STATUS, status)
+    commit(types.CHANGE_LEFTNAV_STATUS, status)
   }
 }
 
