@@ -29,7 +29,7 @@ export default {
   /**
    * 获取首页即将上映电影
    */
-  getComingSoon: (cb) => funcAxios(url + 'film/coming-soon?__t=' + new Date() * 1 + '&page=1&count=3', cb),
+  getComingSoon: cb => funcAxios(url + 'film/coming-soon?__t=' + new Date() * 1 + '&page=1&count=3', cb),
   /**
    * 获取即将上映列表
    */
