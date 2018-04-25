@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import router from './router/index.js'
 import store from './store'
+import './config'
 
 Vue.config.debug = true
 // 自定义滚动指令
