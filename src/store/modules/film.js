@@ -38,7 +38,7 @@ const getters = {
 
 const mutations = {
   [types.FILM_GET_NOWPLAYING] (state, res) {
-    state.nowPlayingList = state.nowPlayingList.concat(res.film)
+    state.nowPlayingList = state.nowPlayingList.concat(res.films)
     state.getNowMore = res.page.current < res.page.total ? true : false
   },
   [types.FILE_NOWPLAYING_NUM] (state) {

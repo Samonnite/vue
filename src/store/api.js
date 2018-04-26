@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-let url =
-  process.env.NODE_ENV !== 'prodution' ? '/api/' : 'http://m.maizuo.com/v4/api/'
+let url = 'http://localhost:8080/v4/api/'
 
 let funcAxios = (api, cb) => {
   axios.get(api).then(res => {
